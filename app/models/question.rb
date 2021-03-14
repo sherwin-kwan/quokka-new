@@ -1,4 +1,4 @@
 class Question < ApplicationRecord
-  belongs_to :quizzes, dependent: :delete_all
-  has_many :possible_answers
+  belongs_to :quizzes
+  has_many :possible_answers, dependent: :delete_all
 end
