@@ -1,4 +1,4 @@
-class AddUserToQuizzes < ActiveRecord::Migration[6.1]
+class AddUserRefToQuizzes < ActiveRecord::Migration[6.1]
   def change
     add_reference :quizzes, :user, null: false, foreign_key: true
   end
