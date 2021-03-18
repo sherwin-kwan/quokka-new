@@ -1,12 +1,12 @@
 module Types
   class QueryType < Types::BaseObject
-    field :quizzes,
-          [Types::QuizType],
+    field :questions,
+          [Types::QuestionType],
           null: false,
-          description: "Returns a list of quizzes"
+          description: "Returns a list of questions"
 
-    def quizzes
-      Quiz.all
+    def questions
+      Question.all
     end
   end
 end

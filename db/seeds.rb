@@ -30,7 +30,7 @@
 #   ]
 # )
 
-
+# users seeds
 John = User.create!(
       username: "john.doe@example.com",
       fname: "John",
@@ -43,9 +43,33 @@ Jane = User.create!(
   lname: "Doe"
 )
 
-Quiz.create!(
-  [
-    { user: John, title: 'Country Capitals Quiz', description: 'How well do you know country capitals?', is_public: true},
-    { user: Jane, title: 'Harry Potter Trivia', description: 'For all potterheads out there', is_public: false},
-  ]
+# quiz seeds
+
+Country = Quiz.create!(
+  user: John, 
+  title: 'Country Capitals Quiz', 
+  description: 'How well do you know country capitals?', 
+  is_public: true
 )
+
+Harry = Quiz.create!(
+  user: Jane, 
+  title: 'Harry Potter Trivia', 
+  description: 'For all potterheads out there', 
+  is_public: false
+)
+
+# questions seeds
+
+One = Question.create!(
+  question_num: 1,
+  quiz: Country,
+  text: 'What is the capital of Canada?'
+)
+
+Two = Question.create!(
+  question_num: 1,
+  quiz: Harry,
+  text: 'Who is he who must not be named?'
+)
+
