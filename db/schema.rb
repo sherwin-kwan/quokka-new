@@ -10,13 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_17_191337) do
+ActiveRecord::Schema.define(version: 2021_03_18_222150) do
 
   create_table "attempts", force: :cascade do |t|
     t.datetime "started_at"
     t.datetime "finished_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.integer "quiz_id", null: false
+    t.index ["quiz_id"], name: "index_attempts_on_quiz_id"
+    t.index ["user_id"], name: "index_attempts_on_user_id"
   end
 
   create_table "possible_answers", force: :cascade do |t|
@@ -24,6 +28,8 @@ ActiveRecord::Schema.define(version: 2021_03_17_191337) do
     t.boolean "is_correct"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "question_id", null: false
+    t.index ["question_id"], name: "index_possible_answers_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -58,6 +64,9 @@ ActiveRecord::Schema.define(version: 2021_03_17_191337) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "attempts", "quizzes"
+  add_foreign_key "attempts", "users"
+  add_foreign_key "possible_answers", "questions"
   add_foreign_key "questions", "quizzes"
   add_foreign_key "quizzes", "users"
 end
