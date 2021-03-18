@@ -43,6 +43,7 @@ Jane = User.create!(
   lname: "Doe"
 )
 
+
 # quiz seeds
 
 Country = Quiz.create!(
@@ -59,17 +60,55 @@ Harry = Quiz.create!(
   is_public: false
 )
 
+# attempt seeds
+
+AttemptCountryJane = Attempt.create!(
+  user: Jane,
+  quiz: Country,
+)
+
+AttemptHarryJohn = Attempt.create!(
+  user: John,
+  quiz: Harry
+)
+
+
 # questions seeds
 
-One = Question.create!(
+QuizCountryQuestionOne = Question.create!(
   question_num: 1,
   quiz: Country,
   text: 'What is the capital of Canada?'
 )
 
-Two = Question.create!(
+QuizHarryQuestionOne = Question.create!(
   question_num: 1,
   quiz: Harry,
   text: 'Who is he who must not be named?'
 )
 
+# possible answers seeds
+
+QuestionOneAnswerOne = PossibleAnswer.create!(
+  answer_text: 'Vancouver',
+  is_correct: false,
+  question: QuizCountryQuestionOne
+)
+
+QuestionOneAnswerTwo = PossibleAnswer.create!(
+  answer_text: 'Ottawa',
+  is_correct: true,
+  question: QuizCountryQuestionOne
+)
+
+QuestionTwoAnswerOne = PossibleAnswer.create!(
+  answer_text: 'Hermione',
+  is_correct: false,
+  question: QuizHarryQuestionOne
+)
+
+QuestionTwoAnswerTwo = PossibleAnswer.create!(
+  answer_text: 'Voldemort',
+  is_correct: true,
+  question: QuizHarryQuestionOne
+)
