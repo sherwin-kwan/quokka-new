@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_18_222150) do
+ActiveRecord::Schema.define(version: 2021_03_21_223849) do
 
   create_table "attempts", force: :cascade do |t|
     t.datetime "started_at"
@@ -54,6 +54,10 @@ ActiveRecord::Schema.define(version: 2021_03_18_222150) do
   create_table "user_answers", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "attempt_id", null: false
+    t.integer "possible_answer_id", null: false
+    t.index ["attempt_id"], name: "index_user_answers_on_attempt_id"
+    t.index ["possible_answer_id"], name: "index_user_answers_on_possible_answer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,4 +73,6 @@ ActiveRecord::Schema.define(version: 2021_03_18_222150) do
   add_foreign_key "possible_answers", "questions"
   add_foreign_key "questions", "quizzes"
   add_foreign_key "quizzes", "users"
+  add_foreign_key "user_answers", "attempts"
+  add_foreign_key "user_answers", "possible_answers"
 end
