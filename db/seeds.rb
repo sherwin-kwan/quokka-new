@@ -115,3 +115,12 @@ QuestionTwoAnswerTwo = PossibleAnswer.create!(
 
 # user answers seeds
 
+UserAnswerOne = UserAnswer.create!(
+  possible_answer: QuestionOneAnswerOne,
+  attempt: AttemptCountryJane
+)
+
+UserAnswerTwo = UserAnswer.create!(
+  possible_answer: QuestionTwoAnswerTwo,
+  attempt: AttemptHarryJohn
+)
