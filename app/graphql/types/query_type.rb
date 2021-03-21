@@ -15,6 +15,11 @@ module Types
           null: false,
           description: "Returns a list of attempts"
 
+    field :quizzes,
+          [Types::QuizType],
+          null: false,
+          description: "Returns a list of quizzes"
+
     def possible_answers
       PossibleAnswer.all
     end
@@ -25,6 +30,10 @@ module Types
 
     def attempts
       Attempt.all
+    end
+
+    def quizzes
+      Quiz.all
     end
   end
 end

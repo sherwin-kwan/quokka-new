@@ -112,3 +112,6 @@ QuestionTwoAnswerTwo = PossibleAnswer.create!(
   is_correct: true,
   question: QuizHarryQuestionOne
 )
+
+# user answers seeds
+
