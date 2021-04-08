@@ -96,6 +96,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.11.1-x86_64-linux)
       racc (~> 1.4)
+    pg (1.2.3)
     puma (5.2.2)
       nio4r (~> 2.0)
     racc (1.5.2)
@@ -143,7 +144,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -162,11 +162,11 @@ DEPENDENCIES
   graphiql-rails
   graphql (~> 1.9)
   listen (~> 3.3)
+  pg
   puma (~> 5.0)
   rails (~> 6.1.3)
   seed-fu
   spring
-  sqlite3 (~> 1.4)
   tzinfo-data
 
 RUBY VERSION

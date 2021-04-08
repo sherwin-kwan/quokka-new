@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2021_03_21_223849) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "attempts", force: :cascade do |t|
     t.datetime "started_at"
     t.datetime "finished_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
-    t.integer "quiz_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "quiz_id", null: false
     t.index ["quiz_id"], name: "index_attempts_on_quiz_id"
     t.index ["user_id"], name: "index_attempts_on_user_id"
   end
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_03_21_223849) do
     t.boolean "is_correct"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "question_id", null: false
+    t.bigint "question_id", null: false
     t.index ["question_id"], name: "index_possible_answers_on_question_id"
   end
 
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 2021_03_21_223849) do
     t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "quiz_id", null: false
+    t.bigint "quiz_id", null: false
     t.index ["quiz_id"], name: "index_questions_on_quiz_id"
   end
 
@@ -47,15 +50,15 @@ ActiveRecord::Schema.define(version: 2021_03_21_223849) do
     t.boolean "is_public"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_quizzes_on_user_id"
   end
 
   create_table "user_answers", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "attempt_id", null: false
-    t.integer "possible_answer_id", null: false
+    t.bigint "attempt_id", null: false
+    t.bigint "possible_answer_id", null: false
     t.index ["attempt_id"], name: "index_user_answers_on_attempt_id"
     t.index ["possible_answer_id"], name: "index_user_answers_on_possible_answer_id"
   end
