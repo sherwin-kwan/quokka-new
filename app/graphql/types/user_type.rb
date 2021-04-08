@@ -6,6 +6,7 @@ module Types
     field :lname, String, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :quizzes, [Types::QuizType], null: true
 
     def full_name
       # `object` references the user instance

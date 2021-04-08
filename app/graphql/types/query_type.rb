@@ -20,6 +20,11 @@ module Types
           null: false,
           description: "Returns a list of quizzes"
 
+    field :quiz, Types::QuizType, null: true do
+      description "get all questions and answers for a single quiz"
+      argument :id, Integer, required: true 
+    end
+
     field :user_answers,
           [Types::UserAnswerType],
           null: false,
@@ -35,6 +40,10 @@ module Types
 
     def attempts
       Attempt.all
+    end
+
+    def quiz(id:)
+      Quiz.find(id)
     end
 
     def quizzes

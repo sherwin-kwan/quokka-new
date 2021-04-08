@@ -7,5 +7,6 @@ module Types
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :quiz_id, Integer, null: false
     field :quiz, Types::QuizType, null: false
+    field :possible_answers, [Types::PossibleAnswerType], null: true
   end
 end
